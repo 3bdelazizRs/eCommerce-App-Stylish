@@ -115,6 +115,68 @@ class SignIn extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: primaryColor),
+                      borderRadius: BorderRadius.circular(50),
+                      color: circleColor),
+                  child: Image.asset("assets/img/google 1.png"),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: primaryColor),
+                      borderRadius: BorderRadius.circular(50),
+                      color: circleColor),
+                  child: Image.asset("assets/img/apple 1.png"),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: primaryColor),
+                      borderRadius: BorderRadius.circular(50),
+                      color: circleColor),
+                  child: Image.asset("assets/img/facebook-app-symbol 1.png"),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 28,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Text.rich(
+                TextSpan(
+                    text: "Create An Account",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontFamily: "Montserrat",
+                      color: Colors.grey,
+                    ),
+                    children: [
+                      TextSpan(
+                          text: "Sign Up",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "Montserrat",
+                            color: primaryColor,
+                          ))
+                    ]),
+              ),
+            )
           ],
         ),
       ),
