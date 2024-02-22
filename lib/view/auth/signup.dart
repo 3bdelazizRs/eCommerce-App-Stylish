@@ -1,18 +1,17 @@
 import 'package:e_commerce/constants/const.dart';
-import 'package:e_commerce/view/auth/forgotpassword.dart';
-import 'package:e_commerce/view/auth/signup.dart';
+import 'package:e_commerce/view/auth/SignIn.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
-  SignIn({super.key});
+class SignUp extends StatefulWidget {
+  SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
-  bool isObsPassword = true;
-
+class _SignUpState extends State<SignUp> {
+  bool isObsPassword1 = true;
+  bool isObsPassword2 = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class _SignInState extends State<SignIn> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Welcome\nBack!",
+                "Create an \naccount",
                 style: TextStyle(
                     fontSize: 36,
                     fontFamily: "Montserrat",
@@ -56,7 +55,7 @@ class _SignInState extends State<SignIn> {
                 height: 30,
               ),
               TextFormField(
-                obscureText: isObsPassword,
+                obscureText: isObsPassword1,
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: fillBorderColor,
@@ -71,9 +70,9 @@ class _SignInState extends State<SignIn> {
                     prefixIcon: const Icon(Icons.lock),
                     suffixIcon: GestureDetector(
                         onTap: () => setState(() {
-                              isObsPassword = !isObsPassword;
+                              isObsPassword1 = !isObsPassword1;
                             }),
-                        child: Icon(isObsPassword
+                        child: Icon(isObsPassword1
                             ? Icons.remove_red_eye_outlined
                             : Icons.remove_moderator_outlined)),
                     hintStyle: const TextStyle(
@@ -84,30 +83,69 @@ class _SignInState extends State<SignIn> {
                     hintText: "Password"),
               ),
               const SizedBox(
-                height: 9,
+                height: 30,
               ),
-              GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ForgotPassword(),
-                  ),
-                ),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Text(
-                    "Forgot Password?",
-                    textAlign: TextAlign.end,
-                    style: TextStyle(
+              TextFormField(
+                obscureText: isObsPassword2,
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: fillBorderColor,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(color: borderColor), //<-- SEE HERE
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(color: borderColor), //<-- SEE HERE
+                    ),
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: GestureDetector(
+                        onTap: () => setState(() {
+                              isObsPassword2 = !isObsPassword2;
+                            }),
+                        child: Icon(isObsPassword2
+                            ? Icons.remove_red_eye_outlined
+                            : Icons.remove_moderator_outlined)),
+                    hintStyle: const TextStyle(
                       fontSize: 12,
                       fontFamily: "Montserrat",
-                      color: primaryColor,
+                      color: Colors.grey,
                     ),
-                  ),
-                ),
+                    hintText: "ConfirmPassword"),
               ),
               const SizedBox(
-                height: 67,
+                height: 9,
+              ),
+              
+              Text.rich(
+                TextSpan(
+                    text: "By clicking the",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontFamily: "Montserrat",
+                      color: Colors.grey,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: "Register",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: "Montserrat",
+                          color: primaryColor,
+                        ),
+                      ),
+                      const TextSpan(
+                        text: "button, you agree\n to the public offer",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: "Montserrat",
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ]),
+              ),
+              const SizedBox(
+                height: 40,
               ),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 15),
@@ -117,7 +155,7 @@ class _SignInState extends State<SignIn> {
                     borderRadius: BorderRadius.circular(4)),
                 child: const Center(
                   child: Text(
-                    "Login",
+                    "Create Account",
                     style: TextStyle(
                         fontSize: 20,
                         fontFamily: "Montserrat",
@@ -127,7 +165,7 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               const SizedBox(
-                height: 75,
+                height: 40,
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
@@ -185,15 +223,15 @@ class _SignInState extends State<SignIn> {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: GestureDetector(
-                  onTap: () => Navigator.push(
+                  onTap: () => Navigator.pop(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SignUp(),
+                      builder: (context) =>  SignIn(),
                     ),
                   ),
                   child: Text.rich(
                     TextSpan(
-                        text: "Create An Account ",
+                        text: "I Already Have an Account ",
                         style: const TextStyle(
                           fontSize: 14,
                           fontFamily: "Montserrat",
@@ -201,7 +239,7 @@ class _SignInState extends State<SignIn> {
                         ),
                         children: [
                           TextSpan(
-                              text: "Sign Up",
+                              text: "Login",
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 decorationColor: primaryColor,

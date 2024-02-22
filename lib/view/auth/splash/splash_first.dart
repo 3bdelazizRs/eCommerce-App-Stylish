@@ -48,7 +48,7 @@ class _SplashFirstState extends State<SplashFirst> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SignIn(),
+                  builder: (context) =>  SignIn(),
                 ),
               );
             },
@@ -124,7 +124,7 @@ class _SplashFirstState extends State<SplashFirst> {
                             onTap: () => Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const SignIn(),
+                                builder: (context) =>  SignIn(),
                               ),
                             ),
                             child: Text(
