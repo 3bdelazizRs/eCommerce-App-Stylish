@@ -116,7 +116,6 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 9,
               ),
-              
               Text.rich(
                 TextSpan(
                     text: "By clicking the",
@@ -127,7 +126,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                     children: [
                       TextSpan(
-                        text: "Register",
+                        text: " Register ",
                         style: TextStyle(
                           fontSize: 12,
                           fontFamily: "Montserrat",
@@ -135,7 +134,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       const TextSpan(
-                        text: "button, you agree\n to the public offer",
+                        text: "button, you agree \nto the public offer",
                         style: TextStyle(
                           fontSize: 12,
                           fontFamily: "Montserrat",
@@ -226,7 +225,7 @@ class _SignUpState extends State<SignUp> {
                   onTap: () => Navigator.pop(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>  SignIn(),
+                      builder: (context) => SignIn(),
                     ),
                   ),
                   child: Text.rich(

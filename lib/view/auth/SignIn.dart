@@ -1,6 +1,7 @@
 import 'package:e_commerce/constants/const.dart';
 import 'package:e_commerce/view/auth/forgotpassword.dart';
 import 'package:e_commerce/view/auth/signup.dart';
+import 'package:e_commerce/view/home/homeSplash.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -109,20 +110,29 @@ class _SignInState extends State<SignIn> {
               const SizedBox(
                 height: 67,
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: primaryColor,
-                    borderRadius: BorderRadius.circular(4)),
-                child: const Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Montserrat",
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeSplash(),
+                      ));
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(4)),
+                  child: const Center(
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: "Montserrat",
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
                 ),
               ),

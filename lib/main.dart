@@ -1,4 +1,5 @@
 import 'package:e_commerce/view/auth/splash/splash.dart';
+import 'package:e_commerce/view/home/homeSplash.dart';
 import 'package:flutter/material.dart';
 
 void main() {

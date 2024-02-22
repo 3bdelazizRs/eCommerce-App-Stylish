@@ -48,7 +48,7 @@ class _SplashFirstState extends State<SplashFirst> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>  SignIn(),
+                  builder: (context) => SignIn(),
                 ),
               );
             },
@@ -110,7 +110,7 @@ class _SplashFirstState extends State<SplashFirst> {
                     //         fontWeight: FontWeight.w600),
                     //   ),
                     // ),
-                    const Text(""),
+                    Text(isLastPage ? "                 " : ""),
                     SmoothPageIndicator(
                       controller: controller,
                       count: 3,
@@ -124,7 +124,7 @@ class _SplashFirstState extends State<SplashFirst> {
                             onTap: () => Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  SignIn(),
+                                builder: (context) => SignIn(),
                               ),
                             ),
                             child: Text(
