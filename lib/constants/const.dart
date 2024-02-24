@@ -9,3 +9,4 @@ var circleColor = const Color(0xFFFCF3F6);
 var menuCircleColor = const Color(0xFFF2F2F2);
 var dotsColor = const Color(0xFFFFA3B3);
 var dealColor = const Color(0xFF4392F9);
+var trendingColor = const Color(0xFFFD6E87);
