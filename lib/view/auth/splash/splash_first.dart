@@ -110,7 +110,7 @@ class _SplashFirstState extends State<SplashFirst> {
                     //         fontWeight: FontWeight.w600),
                     //   ),
                     // ),
-                    Text(isLastPage ? "                 " : ""),
+                    const SizedBox(width: 107, child: Text("")),
                     SmoothPageIndicator(
                       controller: controller,
                       count: 3,
@@ -127,26 +127,34 @@ class _SplashFirstState extends State<SplashFirst> {
                                 builder: (context) => SignIn(),
                               ),
                             ),
-                            child: Text(
-                              "Get Started",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: "Montserrat",
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.w600),
+                            child: SizedBox(
+                              width: 107,
+                              child: Text(
+                                "Get Started",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    fontFamily: "Montserrat",
+                                    color: primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ),
                           )
                         : GestureDetector(
                             onTap: () => controller.nextPage(
                                 duration: const Duration(milliseconds: 500),
                                 curve: Curves.easeInOut),
-                            child: Text(
-                              "Next",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: "Montserrat",
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.w600),
+                            child: SizedBox(
+                              width: 107,
+                              child: Text(
+                                "Next",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: "Montserrat",
+                                    color: primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ),
                           )
                   ],

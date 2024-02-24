@@ -76,7 +76,7 @@ class ForgotPassword extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4)),
                 child: const Center(
                   child: Text(
-                    "Login",
+                    "Submit",
                     style: TextStyle(
                         fontSize: 20,
                         fontFamily: "Montserrat",
