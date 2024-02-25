@@ -2,6 +2,7 @@ import 'package:e_commerce/view/auth/splash/splash.dart';
 import 'package:e_commerce/view/home/homePage.dart';
 import 'package:e_commerce/view/home/homeSplash.dart';
 import 'package:e_commerce/view/home/trendingProducts.dart';
+import 'package:e_commerce/view/widgets/bottomBar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: "Stylish App",
       debugShowCheckedModeBanner: false,
-      home: TrendingProducts(),
+      home: BottomBarScreen(),
     );
   }
 }
