@@ -43,6 +43,7 @@ class CardOfProduct extends StatelessWidget {
                 ),
                 Text(
                   description,
+                  maxLines: 2,
                   style: const TextStyle(
                       fontSize: 10,
                       fontFamily: 'Montserrat',

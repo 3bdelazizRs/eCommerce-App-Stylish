@@ -1,7 +1,4 @@
 import 'package:e_commerce/view/auth/splash/splash.dart';
-import 'package:e_commerce/view/home/productDetails.dart';
-import 'package:e_commerce/view/home/trendingProducts.dart';
-import 'package:e_commerce/view/widgets/cardofproductDetails.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,10 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return const MaterialApp(
       title: "Stylish App",
       debugShowCheckedModeBanner: false,
-      home: ProductsDetails(),
+      home: Splash(),
     );
   }
 }

@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductsDetails extends StatefulWidget {
-  ProductsDetails({super.key});
+  ProductsDetails({super.key, required this.produt});
+  final produt;
 
   @override
   State<ProductsDetails> createState() => _ProductsDetailsState();
@@ -14,83 +15,6 @@ class ProductsDetails extends StatefulWidget {
 
 class _ProductsDetailsState extends State<ProductsDetails> {
   final controller = PageController();
-  var myProduct = [
-    {
-      "img": 'assets/img/produt1.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt2.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt3.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt4.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt5.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt6.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt7.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt2.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt3.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt4.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt6.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt1.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt7.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt3.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt2.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-  ];
 
   final List<String> _sizeList = ["6 UK", "7 UK", "8 UK", "9 UK", "10 UK"];
 
@@ -133,7 +57,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(16),
                               child: Image.asset(
-                                "assets/img/produt9.png",
+                                widget.produt["img"],
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -209,8 +133,8 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const costumText(
-                    text: "NIke Sneakers",
+                  costumText(
+                    text: widget.produt["title"],
                     fontWeight: FontWeight.w700,
                     size: 20,
                   ),
@@ -275,9 +199,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                     fontWeight: FontWeight.w600,
                     size: 14,
                   ),
-                  const costumText(
-                      text:
-                          "Perhaps the most iconic sneaker of all-time, this original \"Chicago\"? colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the "),
+                  costumText(text: widget.produt["description"]),
                   const SizedBox(
                     height: 12,
                   ),
@@ -303,8 +225,8 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                   Row(
                     children: [
                       SizedBox(
-                          height: 40,
-                          width: 136,
+                          height: 45,
+                          width: 150,
                           child: Image.asset(
                             "assets/img/cartPay.png",
                             fit: BoxFit.fill,
@@ -313,32 +235,26 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                         width: 12,
                       ),
                       SizedBox(
-                          height: 40,
-                          width: 136,
+                          height: 45,
+                          width: 150,
                           child: Image.asset(
                             "assets/img/cartBuy.png",
                             fit: BoxFit.fill,
                           )),
                     ],
                   ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const costumText(
-                    text: "Similar To",
-                    size: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  const SizedBox(
-                    height: 9,
-                  ),
-                  
+                  // const SizedBox(
+                  //   height: 12,
+                  // ),
+                  // const costumText(
+                  //   text: "Similar To",
+                  //   size: 20,
+                  //   fontWeight: FontWeight.w600,
+                  // ),
+                  // const SizedBox(
+                  //   height: 9,
+                  // ),
                 ]),
-                Expanded(
-                    child: Product(
-                      myProduct: myProduct,
-                    ),
-                  ),
           ],
         ),
       ),
