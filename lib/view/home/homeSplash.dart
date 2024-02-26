@@ -1,5 +1,5 @@
 import 'package:e_commerce/constants/const.dart';
-import 'package:e_commerce/view/home/homePage.dart';
+import 'package:e_commerce/view/widgets/bottomBar.dart';
 import 'package:flutter/material.dart';
 
 class HomeSplash extends StatelessWidget {
@@ -60,10 +60,10 @@ class HomeSplash extends StatelessWidget {
                     height: 44,
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.push(
+                    onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomePage(),
+                        builder: (context) => const BottomBarScreen(),
                       ),
                     ),
                     child: Container(

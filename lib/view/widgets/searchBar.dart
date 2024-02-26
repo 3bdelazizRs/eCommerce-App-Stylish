@@ -1,4 +1,3 @@
-
 import 'package:e_commerce/constants/const.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +22,7 @@ class MySearchBar extends StatelessWidget {
             ),
             Row(
               children: [
-                Image.asset("assets/img/logo.png",
-                    width: 39, height: 31),
+                Image.asset("assets/img/logo.png", width: 39, height: 31),
                 const SizedBox(
                   width: 10,
                 ),
@@ -48,16 +46,13 @@ class MySearchBar extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 11),
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.shade200,
-                    offset: const Offset(1, 1),
-                    blurRadius: 1,
-                    spreadRadius: 1)
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(6)),
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+                color: Colors.grey.shade200,
+                offset: const Offset(1, 1),
+                blurRadius: 1,
+                spreadRadius: 1)
+          ], color: Colors.white, borderRadius: BorderRadius.circular(6)),
           child: Row(
             children: [
               const Icon(
@@ -87,91 +82,6 @@ class MySearchBar extends StatelessWidget {
               )
             ],
           ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "All Featured",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w600),
-            ),
-            Row(
-              children: [
-                Container(
-                  width: 61,
-                  height: 24,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            offset: const Offset(1, 1),
-                            blurRadius: 1,
-                            spreadRadius: 1)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(6)),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Sort",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Icon(
-                        Icons.keyboard_double_arrow_down_outlined,
-                        size: 20,
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-                Container(
-                  width: 61,
-                  height: 24,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            offset: const Offset(1, 1),
-                            blurRadius: 1,
-                            spreadRadius: 1)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(6)),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Filter",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Icon(
-                        Icons.filter_alt_outlined,
-                        size: 20,
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            )
-          ],
         ),
       ],
     );

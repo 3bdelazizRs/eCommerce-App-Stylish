@@ -34,7 +34,92 @@ class _HomePageState extends State<HomePage> {
           children: [
             const MySearchBar(),
             const SizedBox(
-              height: 10,
+              height: 16,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "All Featured",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w600),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: 61,
+                      height: 24,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.shade200,
+                                offset: const Offset(1, 1),
+                                blurRadius: 1,
+                                spreadRadius: 1)
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6)),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Sort",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Icon(
+                            Icons.keyboard_double_arrow_down_outlined,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Container(
+                      width: 61,
+                      height: 24,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.shade200,
+                                offset: const Offset(1, 1),
+                                blurRadius: 1,
+                                spreadRadius: 1)
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6)),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Filter",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Icon(
+                            Icons.filter_alt_outlined,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 5,
             ),
             /* TOP MENU OF CHOICE*/
             Expanded(

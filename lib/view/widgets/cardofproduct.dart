@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants/const.dart';
 import 'package:e_commerce/view/widgets/costumtext.dart';
 import 'package:flutter/material.dart';
 
@@ -84,17 +85,17 @@ class CardOfProduct extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.star, color: Colors.yellow, size: 16),
-                    Icon(Icons.star, color: Colors.yellow, size: 16),
-                    Icon(Icons.star, color: Colors.yellow, size: 16),
-                    Icon(Icons.star, color: Colors.yellow, size: 16),
-                    Icon(Icons.star, color: Colors.grey, size: 16),
-                    SizedBox(
+                    Icon(Icons.star, color: starColor, size: 16),
+                    Icon(Icons.star, color: starColor, size: 16),
+                    Icon(Icons.star, color: starColor, size: 16),
+                    Icon(Icons.star, color: starColor, size: 16),
+                    const Icon(Icons.star, color: Colors.grey, size: 16),
+                    const SizedBox(
                       width: 4,
                     ),
-                    costumText(
+                    const costumText(
                       text: "56890",
                       color: Colors.grey,
                     ),
