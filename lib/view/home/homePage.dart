@@ -2,6 +2,8 @@ import 'package:e_commerce/constants/const.dart';
 import 'package:e_commerce/view/widgets/cardAnnonce.dart';
 import 'package:e_commerce/view/widgets/cardofmenu.dart';
 import 'package:e_commerce/view/widgets/cardofproduct.dart';
+import 'package:e_commerce/view/widgets/costumAppBar.dart';
+import 'package:e_commerce/view/widgets/costumDrawer.dart';
 import 'package:e_commerce/view/widgets/costumtext.dart';
 import 'package:e_commerce/view/widgets/searchBar.dart';
 import 'package:flutter/material.dart';
@@ -24,15 +26,22 @@ class _HomePageState extends State<HomePage> {
     {"title": "Womens", "image": "assets/img/Ellipse 8.png"},
     {"title": "Gifts", "image": "assets/img/Ellipse 9.png"},
   ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer:const CostumDrawer(),
+      appBar: CostumAppBar(scaffoldKey: _scaffoldKey),
       backgroundColor: backgroundColor,
       body: Padding(
-        padding: const EdgeInsets.only(right: 10, left: 10, top: 40),
+        padding: const EdgeInsets.only(right: 10, left: 10),
         child: Column(
           children: [
-            const MySearchBar(),
+            MySearchBar(
+              buildContext: context,
+            ),
             const SizedBox(
               height: 16,
             ),
@@ -83,35 +92,37 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       width: 12,
                     ),
-                    Container(
-                      width: 61,
-                      height: 24,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade200,
-                                offset: const Offset(1, 1),
-                                blurRadius: 1,
-                                spreadRadius: 1)
+                    GestureDetector(
+                      child: Container(
+                        width: 61,
+                        height: 24,
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade200,
+                                  offset: const Offset(1, 1),
+                                  blurRadius: 1,
+                                  spreadRadius: 1)
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(6)),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Filter",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            Icon(
+                              Icons.filter_alt_outlined,
+                              size: 20,
+                            )
                           ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(6)),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Filter",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Icon(
-                            Icons.filter_alt_outlined,
-                            size: 20,
-                          )
-                        ],
+                        ),
                       ),
                     ),
                   ],
@@ -267,7 +278,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(
                     width: 340,
-                    height: 350,
+                    height: 330,
                     child: ListView.builder(
                         itemCount: 9,
                         scrollDirection: Axis.horizontal,
@@ -466,3 +477,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
