@@ -1,4 +1,5 @@
 import 'package:e_commerce/constants/const.dart';
+import 'package:e_commerce/view/home/Profile.dart';
 import 'package:flutter/material.dart';
 
 class CostumAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -40,8 +41,16 @@ class CostumAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 8),
-          child: CircleAvatar(
-            child: Image.asset("assets/img/avatar.png"),
+          child: GestureDetector(
+            onTap: ()=>Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Profile(),
+                  ),
+                ),
+            child: CircleAvatar(
+              child: Image.asset("assets/img/avatar.png"),
+            ),
           ),
         )
       ],

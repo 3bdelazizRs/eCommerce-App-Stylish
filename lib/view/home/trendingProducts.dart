@@ -1,10 +1,8 @@
-import 'package:e_commerce/view/widgets/cardofproduct.dart';
 import 'package:e_commerce/view/widgets/costumAppBar.dart';
 import 'package:e_commerce/view/widgets/costumDrawer.dart';
 import 'package:e_commerce/view/widgets/product.dart';
 import 'package:e_commerce/view/widgets/searchBar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class TrendingProducts extends StatefulWidget {
   const TrendingProducts({super.key});

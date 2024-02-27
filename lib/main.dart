@@ -1,4 +1,5 @@
 import 'package:e_commerce/view/auth/splash/splash.dart';
+import 'package:e_commerce/view/home/PlaceOrder.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: "Stylish App",
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: PlaceOrder(),
     );
   }
 }

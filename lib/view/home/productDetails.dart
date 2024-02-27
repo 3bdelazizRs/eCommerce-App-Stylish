@@ -1,7 +1,6 @@
 import 'package:e_commerce/constants/const.dart';
 import 'package:e_commerce/view/widgets/cardofproductDetails.dart';
 import 'package:e_commerce/view/widgets/costumtext.dart';
-import 'package:e_commerce/view/widgets/product.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

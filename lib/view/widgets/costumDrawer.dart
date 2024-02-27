@@ -13,20 +13,27 @@ class CostumDrawer extends StatelessWidget {
         children: <Widget>[
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.white,
             ),
-            child: Text('Drawer Header'),
+            child: Text('Abdelaziz Rass'),
           ),
           ListTile(
-            title: const Text('Item 1'),
+            title: const Text('About us'),
+            leading: const Icon(
+              Icons.info,
+            ),
             onTap: () {
-              // Add functionality for Item 1
+              // Add functionality for Item 2
             },
           ),
           ListTile(
-            title: Text('Item 2'),
+            title: const Text('Log out'),
+            leading: const Icon(
+              Icons.logout,
+              color: Colors.red,
+            ),
             onTap: () {
-              // Add functionality for Item 2
+              // Add functionality for Item 1
             },
           ),
         ],
