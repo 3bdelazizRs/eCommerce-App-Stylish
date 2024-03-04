@@ -15,7 +15,11 @@ class CostumDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
             ),
-            child: Text('Abdelaziz Rass'),
+            child: Column(
+              children: [CircleAvatar(
+                
+              ), Text('Abdelaziz Rass')],
+            ),
           ),
           ListTile(
             title: const Text('About us'),

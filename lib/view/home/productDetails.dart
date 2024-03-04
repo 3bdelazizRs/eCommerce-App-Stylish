@@ -1,7 +1,11 @@
+import 'package:e_commerce/Controller/ProductController.dart';
 import 'package:e_commerce/constants/const.dart';
 import 'package:e_commerce/view/widgets/cardofproductDetails.dart';
 import 'package:e_commerce/view/widgets/costumtext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductsDetails extends StatefulWidget {
@@ -21,242 +25,286 @@ class _ProductsDetailsState extends State<ProductsDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: menuCircleColor,
-                  borderRadius: BorderRadius.circular(100)),
-              child: const Icon(Icons.shopping_cart),
-            ),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16),
-        child: ListView(
-          children: [
-            Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 235,
-                    child: PageView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        controller: controller,
-                        itemCount: 3,
-                        itemBuilder: (context, item) {
-                          return Container(
-                            padding: const EdgeInsets.only(left: 5, right: 5),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: Image.asset(
-                                widget.produt["img"],
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          );
-                        }),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Center(
-                    child: SmoothPageIndicator(
-                      controller: controller,
-                      count: 3,
-                      effect: SwapEffect(
-                          dotHeight: 10,
-                          dotWidth: 10,
-                          activeDotColor: primaryColor),
+    return GetBuilder<ProductController>(
+        init: ProductController(),
+        builder: (prodController) => Scaffold(
+              appBar: AppBar(
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: menuCircleColor,
+                          borderRadius: BorderRadius.circular(100)),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.shopping_cart),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          costumText(
+                            text: "${prodController.myProduct.length}",
+                            size: 20.sp,
+                            fontWeight: FontWeight.w600,
+                            color: primaryColor,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      const costumText(
-                        text: "Size: ",
-                        fontWeight: FontWeight.w700,
-                        size: 14,
+                ],
+              ),
+              body: Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 235.h,
+                                child: PageView.builder(
+                                    physics: const BouncingScrollPhysics(),
+                                    controller: controller,
+                                    itemCount: 3,
+                                    itemBuilder: (context, item) {
+                                      return Container(
+                                        padding: EdgeInsets.only(
+                                            left: 5.r, right: 5.r),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          child: Image.network(
+                                            widget.produt.image,
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              Center(
+                                child: SmoothPageIndicator(
+                                  controller: controller,
+                                  count: 3,
+                                  effect: SwapEffect(
+                                      dotHeight: 10,
+                                      dotWidth: 10,
+                                      activeDotColor: primaryColor),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  const costumText(
+                                    text: "Size: ",
+                                    fontWeight: FontWeight.w700,
+                                    size: 14,
+                                  ),
+                                  costumText(
+                                    text: _sizeList[_indexSelect],
+                                    fontWeight: FontWeight.w700,
+                                    size: 14,
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 12,
+                              ),
+                              SizedBox(
+                                height: 35,
+                                child: ListView.builder(
+                                    itemCount: _sizeList.length,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 8),
+                                        child: GestureDetector(
+                                          onTap: () => setState(() {
+                                            _indexSelect = index;
+                                          }),
+                                          child: Container(
+                                            padding: const EdgeInsets.all(8),
+                                            decoration: BoxDecoration(
+                                                color: _indexSelect == index
+                                                    ? dotsColor
+                                                    : Colors.white,
+                                                border: Border.all(
+                                                    color: dotsColor,
+                                                    width: 1.5),
+                                                borderRadius:
+                                                    BorderRadius.circular(4)),
+                                            child: Center(
+                                              child: costumText(
+                                                text: _sizeList[index],
+                                                color: _indexSelect == index
+                                                    ? Colors.white
+                                                    : dotsColor,
+                                                fontWeight: FontWeight.w600,
+                                                size: 14,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              costumText(
+                                text: widget.produt.title,
+                                fontWeight: FontWeight.w700,
+                                size: 20,
+                              ),
+                              Row(
+                                children: [
+                                  RatingBarIndicator(
+                                    rating: double.parse(
+                                        "${widget.produt.rating.rating}"),
+                                    itemBuilder: (context, index) => const Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                    itemCount: 5,
+                                    itemSize: 18.sp,
+                                    direction: Axis.horizontal,
+                                  ),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  costumText(
+                                    text: "${widget.produt.rating.count}",
+                                    color: Colors.grey,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "\$ ${widget.produt.price + (widget.produt.price * 0.4)}",
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      decoration: TextDecoration.lineThrough,
+                                      fontSize: 14,
+                                      fontFamily: 'Montserrat',
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 8.w,
+                                  ),
+                                  costumText(
+                                    text: "\$ ${widget.produt.price}",
+                                    size: 14.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  SizedBox(
+                                    width: 8.w,
+                                  ),
+                                  costumText(
+                                    text: "40% Off",
+                                    size: 14.sp,
+                                    color: Colors.red,
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              const costumText(
+                                text: "Product Details",
+                                fontWeight: FontWeight.w600,
+                                size: 14,
+                              ),
+                              costumText(text: widget.produt.description),
+                              SizedBox(
+                                height: 12.h,
+                              ),
+                              const Row(
+                                children: [
+                                  cardOfDetailsProduct(
+                                    title: "Nearest Store",
+                                    icon: Icons.location_on_outlined,
+                                  ),
+                                  cardOfDetailsProduct(
+                                    title: "VIP",
+                                    icon: Icons.lock_outline_rounded,
+                                  ),
+                                  cardOfDetailsProduct(
+                                    title: "Return policy",
+                                    icon: Icons.restore,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 12,
+                              ),
+                            ]),
                       ),
-                      costumText(
-                        text: _sizeList[_indexSelect],
-                        fontWeight: FontWeight.w700,
-                        size: 14,
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  SizedBox(
-                    height: 35,
-                    child: ListView.builder(
-                        itemCount: _sizeList.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: GestureDetector(
-                              onTap: () => setState(() {
-                                _indexSelect = index;
-                              }),
+                    ),
+                    SizedBox(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 20.w,
+                            ),
+                            GestureDetector(
+                              onTap: () => prodController
+                                  .addProductToCard(widget.produt),
                               child: Container(
-                                padding: const EdgeInsets.all(8),
+                                width: 140.w,
+                                height: 60.h,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15),
                                 decoration: BoxDecoration(
-                                    color: _indexSelect == index
-                                        ? dotsColor
-                                        : Colors.white,
-                                    border: Border.all(
-                                        color: dotsColor, width: 1.5),
+                                    border: Border.all(color: primaryColor),
                                     borderRadius: BorderRadius.circular(4)),
                                 child: Center(
                                   child: costumText(
-                                    text: _sizeList[index],
-                                    color: _indexSelect == index
-                                        ? Colors.white
-                                        : dotsColor,
-                                    fontWeight: FontWeight.w600,
-                                    size: 14,
-                                  ),
+                                      text: "Add to Card",
+                                      size: 18.sp,
+                                      color: primaryColor,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
-                          );
-                        }),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  costumText(
-                    text: widget.produt["title"],
-                    fontWeight: FontWeight.w700,
-                    size: 20,
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: starColor, size: 16),
-                      Icon(Icons.star, color: starColor, size: 16),
-                      Icon(Icons.star, color: starColor, size: 16),
-                      Icon(Icons.star, color: starColor, size: 16),
-                      const Icon(Icons.star, color: Colors.grey, size: 16),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      const costumText(
-                        text: "56890",
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Row(
-                    children: [
-                      Text(
-                        "\$ 2999",
-                        style: TextStyle(
-                          color: Colors.grey,
-                          decoration: TextDecoration.lineThrough,
-                          fontSize: 14,
-                          fontFamily: 'Montserrat',
+                            GestureDetector(
+                              onTap: () => () {},
+                              child: Container(
+                                width: 140.w,
+                                height: 60.h,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15),
+                                decoration: BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.circular(4)),
+                                child: Center(
+                                  child: costumText(
+                                      text: "Buy Now",
+                                      size: 18.sp,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "\$ 1500",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "50% Off",
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 14,
-                          fontFamily: 'Montserrat',
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const costumText(
-                    text: "Product Details",
-                    fontWeight: FontWeight.w600,
-                    size: 14,
-                  ),
-                  costumText(text: widget.produt["description"]),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const Row(
-                    children: [
-                      cardOfDetailsProduct(
-                        title: "Nearest Store",
-                        icon: Icons.location_on_outlined,
-                      ),
-                      cardOfDetailsProduct(
-                        title: "VIP",
-                        icon: Icons.lock_outline_rounded,
-                      ),
-                      cardOfDetailsProduct(
-                        title: "Return policy",
-                        icon: Icons.restore,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                          height: 45,
-                          width: 150,
-                          child: Image.asset(
-                            "assets/img/cartPay.png",
-                            fit: BoxFit.fill,
-                          )),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      SizedBox(
-                          height: 45,
-                          width: 150,
-                          child: Image.asset(
-                            "assets/img/cartBuy.png",
-                            fit: BoxFit.fill,
-                          )),
-                    ],
-                  ),
-                  // const SizedBox(
-                  //   height: 12,
-                  // ),
-                  // const costumText(
-                  //   text: "Similar To",
-                  //   size: 20,
-                  //   fontWeight: FontWeight.w600,
-                  // ),
-                  // const SizedBox(
-                  //   height: 9,
-                  // ),
-                ]),
-          ],
-        ),
-      ),
-    );
+                    ),
+                  ],
+                ),
+              ),
+            ));
   }
 }

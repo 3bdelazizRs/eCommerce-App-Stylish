@@ -1,8 +1,13 @@
+import 'package:e_commerce/Services/productAPI.dart';
+import 'package:e_commerce/constants/const.dart';
+import 'package:e_commerce/view/widgets/Shimmer.dart';
+import 'package:e_commerce/view/widgets/cardLoding.dart';
 import 'package:e_commerce/view/widgets/costumAppBar.dart';
 import 'package:e_commerce/view/widgets/costumDrawer.dart';
 import 'package:e_commerce/view/widgets/product.dart';
 import 'package:e_commerce/view/widgets/searchBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class TrendingProducts extends StatefulWidget {
   const TrendingProducts({super.key});
@@ -12,110 +17,60 @@ class TrendingProducts extends StatefulWidget {
 }
 
 class _TrendingProductsState extends State<TrendingProducts> {
-  var myProduct = [
-    {
-      "img": 'assets/img/produt1.png',
-      "title": "Black Winter",
-      "description":
-          "Perhaps the most iconic sneaker of all-time, this original \"Chicago\"? colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the "
-    },
-    {
-      "img": 'assets/img/produt2.png',
-      "title": "Black Winter",
-      "description":
-          "Perhaps the most iconic sneaker of all-time, this original \"Chicago\"? colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the "
-    },
-    {
-      "img": 'assets/img/produt3.png',
-      "title": "Black Winter",
-      "description":
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, fugit quis qui obcaecati animi praesentium a ab accusantium dignissimos aspernatur, placeat doloribus vel tempore dolores! Alias veniam nostrum natus pariatur."
-    },
-    {
-      "img": 'assets/img/produt4.png',
-      "title": "Black Winter",
-      "description":
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt explicabo iusto omnis non sequi quam pariatur debitis velit neque! Molestias nihil laborum asperiores explicabo ipsa magnam! Nemo, voluptates quas!"
-    },
-    {
-      "img": 'assets/img/produt5.png',
-      "title": "Black Winter",
-      "description":
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo itaque ullam inventore quaerat, repellat eum! Ipsum ipsam ut quia id cum? Voluptatem error molestiae animi eveniet repellendus sint laborum temporibus."
-    },
-    {
-      "img": 'assets/img/produt6.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt7.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt2.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt3.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt4.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt6.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt1.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt7.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt3.png',
-      "title": "Black Winter",
-      "description": "Autumn And Winter Casual \ncotton-padded jacket..."
-    },
-    {
-      "img": 'assets/img/produt2.png',
-      "title": "Black Winter",
-      "description":
-          " Perhaps the most iconic sneaker of all-time, this original \"Chicago\"? colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the "
-    },
-  ];
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _shimmerGradient = const LinearGradient(
+    colors: [
+      Color(0xFFEBEBF4),
+      Color(0xFFF4F4F4),
+      Color(0xFFEBEBF4),
+    ],
+    stops: [
+      0.1,
+      0.3,
+      0.4,
+    ],
+    begin: Alignment(-1.0, -0.3),
+    end: Alignment(1.0, 0.3),
+    tileMode: TileMode.clamp,
+  );
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: CostumAppBar(scaffoldKey: _scaffoldKey),
-      drawer: const CostumDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.only(
-          right: 10,
-          left: 10,
-        ),
-        child: Column(
-          children: [
-            MySearchBar(
-              buildContext: context,
-            ),
-            Expanded(child: Product(myProduct: myProduct))
-          ],
-        ),
-      ),
-    );
+    return FutureBuilder(
+        future: ProductAPI().GetData(),
+        builder: (context, snapshot) => Scaffold(
+              key: _scaffoldKey,
+              appBar: CostumAppBar(scaffoldKey: _scaffoldKey),
+              drawer: const CostumDrawer(),
+              body: Padding(
+                padding: const EdgeInsets.only(
+                  right: 10,
+                  left: 10,
+                ),
+                child: Column(
+                  children: [
+                    MySearchBar(
+                      buildContext: context,
+                    ),
+                    snapshot.hasData
+                        ? Expanded(
+                            child: Product(myProduct: snapshot.data!.data))
+                        : Expanded(
+                            child: MasonryGridView.count(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 10,
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 4,
+                            crossAxisSpacing: 4,
+                            itemBuilder: (context, index) {
+                              return Shimmer(
+                                linearGradient: _shimmerGradient,
+                                child: const CardLoding(),
+                              );
+                            },
+                          )),
+                  ],
+                ),
+              ),
+            ));
   }
 }

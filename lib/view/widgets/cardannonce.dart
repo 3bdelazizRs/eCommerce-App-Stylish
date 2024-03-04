@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CardAnnonce extends StatelessWidget {
   const CardAnnonce({
@@ -16,8 +17,8 @@ class CardAnnonce extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      width: 343,
-      height: 60,
+      width: 343.w,
+      height: 60.h,
       decoration:
           BoxDecoration(color: color, borderRadius: BorderRadius.circular(6)),
       child: Row(
@@ -29,9 +30,9 @@ class CardAnnonce extends StatelessWidget {
             children: [
               Text(
                 text,
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w500),
               ),
@@ -39,14 +40,17 @@ class CardAnnonce extends StatelessWidget {
                 children: [
                   Icon(
                     icon,
-                    size: 20,
+                    size: 15.sp,
                     color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: 4.w,
                   ),
                   Text(
                     descpition,
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.w500),
                   ),
@@ -55,26 +59,26 @@ class CardAnnonce extends StatelessWidget {
             ],
           ),
           Container(
-            width: 100,
-            height: 32,
+            width: 100.w,
+            height: 32.h,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 borderRadius: BorderRadius.circular(6)),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   "View all",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: 12.sp,
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w700),
                 ),
                 Icon(
                   Icons.arrow_forward_outlined,
                   color: Colors.white,
-                  size: 16,
+                  size: 16.sp,
                 )
               ],
             ),

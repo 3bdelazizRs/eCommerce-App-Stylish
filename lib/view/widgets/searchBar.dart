@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MySearchBar extends StatelessWidget {
   const MySearchBar({
@@ -11,7 +12,7 @@ class MySearchBar extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 11),
+          padding: EdgeInsets.symmetric(horizontal: 11.r),
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
                 color: Colors.grey.shade200,
@@ -25,18 +26,18 @@ class MySearchBar extends StatelessWidget {
                 Icons.search,
                 color: Colors.grey,
               ),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: 10.w,
               ),
               Expanded(
                 child: TextFormField(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     focusedBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     hintText: "Search any Product..",
                     hintStyle: TextStyle(
                       color: Colors.grey,
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontFamily: 'Montserrat',
                     ),
                   ),
