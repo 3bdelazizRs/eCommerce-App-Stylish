@@ -8,4 +8,12 @@ class ProductController extends GetxController {
     myProduct.add(product);
     update();
   }
+
+  double calculPrice() {
+    double priceTotal = 0;
+    for (Product product in myProduct) {
+      priceTotal += product.price;
+    }
+    return priceTotal;
+  }
 }

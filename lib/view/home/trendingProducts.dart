@@ -1,5 +1,5 @@
+import 'package:e_commerce/Controller/ProductController.dart';
 import 'package:e_commerce/Services/productAPI.dart';
-import 'package:e_commerce/constants/const.dart';
 import 'package:e_commerce/view/widgets/Shimmer.dart';
 import 'package:e_commerce/view/widgets/cardLoding.dart';
 import 'package:e_commerce/view/widgets/costumAppBar.dart';
@@ -8,6 +8,7 @@ import 'package:e_commerce/view/widgets/product.dart';
 import 'package:e_commerce/view/widgets/searchBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 
 class TrendingProducts extends StatefulWidget {
   const TrendingProducts({super.key});
@@ -33,6 +34,7 @@ class _TrendingProductsState extends State<TrendingProducts> {
     end: Alignment(1.0, 0.3),
     tileMode: TileMode.clamp,
   );
+  ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

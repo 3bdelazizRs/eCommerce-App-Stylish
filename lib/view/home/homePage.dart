@@ -11,7 +11,6 @@ import 'package:e_commerce/view/widgets/costumtext.dart';
 import 'package:e_commerce/view/widgets/searchBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {

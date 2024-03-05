@@ -112,7 +112,7 @@ class _SignInState extends State<SignIn> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const HomeSplash(),
